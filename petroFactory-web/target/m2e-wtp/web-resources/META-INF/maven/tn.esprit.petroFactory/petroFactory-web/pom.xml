@@ -6,10 +6,12 @@
 		<artifactId>petroFactory</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>petroFactory-ejb</artifactId>
-	<packaging>ejb</packaging>
+	<artifactId>petroFactory-web</artifactId>
+	<packaging>war</packaging>
 
-
+	<properties>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -17,25 +19,20 @@
 			<artifactId>javaee-api</artifactId>
 		</dependency>
 		<dependency>
-    <groupId>commons-codec</groupId>
-    <artifactId>commons-codec</artifactId>
-    <version>1.9</version>
-</dependency>
-		
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>tn.esprit.petroFactory</groupId>
+			<artifactId>petroFactory-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ejb-plugin</artifactId>
-				<version>${version.ejb.plugin}</version>
-				<configuration>
-					<ejbVersion>3.2</ejbVersion>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
+
 
 </project>
