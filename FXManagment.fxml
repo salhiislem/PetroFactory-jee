@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="794.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.petrofactory.interfaces.FXManagmentController">
+   <children>
+      <Button fx:id="bnt1" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#Gaspump" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="GasPumps">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn2" layoutX="243.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#Pumpmeter" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="PumpMeters">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn3" layoutX="474.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#Fuelorder" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Fuel Orders">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn4" layoutX="705.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#report" prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: transparent;" text="Reports">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
