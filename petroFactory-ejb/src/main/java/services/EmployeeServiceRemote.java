@@ -14,6 +14,6 @@ public interface EmployeeServiceRemote {
 	public List<Employee> filterEmployeesByrole(Role role);
 	public List<Employee> filterEmployeesByName(String name);
 	public List<Employee> filterEmployeesByNameANDrole(String name,Role role);
-
+	public void updateEmployee(Employee emp);
 
 }

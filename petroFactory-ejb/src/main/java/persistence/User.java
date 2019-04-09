@@ -39,9 +39,15 @@ public class User implements Serializable {
 	    private String numTel;
 		@OneToMany (mappedBy="jobSeeker")
 		private List<JobRequest> jobRequests;
-		
+		private static User ConnectedUser;
 
-	 public List<JobRequest> getJobRequests() {
+	 public static User getConnectedUser() {
+			return ConnectedUser;
+		}
+		public static void setConnectedUser(User connectedUser) {
+			ConnectedUser = connectedUser;
+		}
+	public List<JobRequest> getJobRequests() {
 			return jobRequests;
 		}
 		public void setJobRequests(List<JobRequest> jobRequests) {

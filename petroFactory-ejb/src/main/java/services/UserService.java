@@ -22,6 +22,7 @@ import utils.MD5Hash;
 public class UserService implements UserServiceRemote, UserServiceLocal {
 	@PersistenceContext(unitName = "petroFactory-ejb")
 	EntityManager entityManager;
+	
 	@Override
 	public void createUser(User user) {
 		user.setPassword(MD5Hash.getMD5Hash(user.getPassword()));
@@ -40,7 +41,7 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	@Override
 	public boolean activateAccount(String confirmationToken) {
 		Query query = entityManager.createQuery(
-				"SELECT new User(u.id,u.confirmationToken) " + "FROM User u WHERE u.confirmationToken=:param");
+				"SELECT u FROM User u WHERE u.confirmationToken=:param");
 		User u = null;
 		try {
 			u = (User) query.setParameter("param", confirmationToken).getSingleResult();
@@ -102,6 +103,7 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
                         cb.equal(emp.get("password"), MD5.crypt(pwd)));
 
         try {
+        	
             return entityManager.createQuery(c).getSingleResult();
         } catch (Exception e) {
             return null;

@@ -27,18 +27,38 @@ public class JobRequest implements Serializable {
 	    private String coverLetter;
 		private String note;
 		private Date interviewDate;
-	 
-		@OneToMany (mappedBy="jobrequest")
+	    private int nbYearExperience;
+		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Experience> experiences;
-		@OneToMany (mappedBy="jobrequest")
+		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Skills> skills;
-		@OneToMany (mappedBy="jobrequest")
+		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Diploma> diplomas;
-		@OneToMany (mappedBy="jobrequest")
+		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Education> educations;
 		 @ManyToOne
 			private User jobSeeker;
+		 @OneToOne
+			private JobOffer jobOffer;
 		 
+	public int getNbYearExperience() {
+			return nbYearExperience;
+		}
+
+		public void setNbYearExperience(int nbYearExperience) {
+			this.nbYearExperience = nbYearExperience;
+		}
+
+	public JobOffer getJobOffer() {
+			return jobOffer;
+		}
+
+		public void setJobOffer(JobOffer jobOffer) {
+			this.jobOffer = jobOffer;
+		}
+
+	
+		
 	public List<Experience> getExperiences() {
 			return experiences;
 		}

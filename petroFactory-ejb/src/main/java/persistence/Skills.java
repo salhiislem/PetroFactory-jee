@@ -20,6 +20,8 @@ public class Skills implements Serializable {
 	 private Degree degree;
 	 @ManyToOne
 		private JobRequest jobrequest;
+	 @ManyToOne
+		private JobRequest jobOffer;
 	private static final long serialVersionUID = 1L;
 
 	public JobRequest getJobrequest() {

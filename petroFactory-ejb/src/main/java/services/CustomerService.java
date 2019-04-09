@@ -22,9 +22,9 @@ public class CustomerService implements CustomerServiceLocal,CustomerServiceRemo
 	@Override
 	public List<Customer> filterCustomerByName(String name) {
 		Query query = entityManager.createQuery(
-				"SELECT u FROM Customer u WHERE lasttname=:param");
+				"SELECT u FROM Customer u WHERE u.lastname like :param OR  u.firstname like :param OR  u.username like :param");
 		
-		return (List<Customer>) query.setParameter("param",name).getResultList();
+		return (List<Customer>) query.setParameter("param","%"+name+"%").getResultList();
 	}
 
 }

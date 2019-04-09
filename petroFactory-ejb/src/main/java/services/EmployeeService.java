@@ -25,6 +25,10 @@ public class EmployeeService implements EmployeeServiceRemote,EmployeeServiceLoc
 				"SELECT u FROM Employee u");
 		return (List<Employee>) query.getResultList();
 	}
+	
+	@Override
+	public void updateEmployee(Employee emp) {
+		entityManager.merge(emp);}
 
 	@Override
 	public List<Employee> filterEmployeesByrole(Role role) {
@@ -37,9 +41,9 @@ public class EmployeeService implements EmployeeServiceRemote,EmployeeServiceLoc
 	@Override
 	public List<Employee> filterEmployeesByName(String name) {
 		Query query = entityManager.createQuery(
-				"SELECT u FROM Employee u WHERE lastname=:param");
+				"SELECT u FROM Employee u WHERE u.lastname like :param OR  u.firstname like :param OR  u.username like :param");
 		
-		return (List<Employee>) query.setParameter("param",name).getResultList();
+		return (List<Employee>) query.setParameter("param","%"+name+"%").getResultList();
 	}
 
 	@Override
