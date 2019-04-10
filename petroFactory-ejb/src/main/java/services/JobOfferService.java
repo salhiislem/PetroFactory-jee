@@ -19,5 +19,11 @@ public class JobOfferService implements JobOfferServiceLocal,JobOfferServiceRemo
 		Query query = entityManager.createQuery(
 				"SELECT u FROM JobOffer u");
 		return (List<JobOffer>) query.getResultList();	}
+	
+	@Override
+	public JobOffer findOfferById(int id) {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM JobOffer u where u.id=:param");
+		return (JobOffer) query.setParameter("param",id).getSingleResult();	}
 
 }

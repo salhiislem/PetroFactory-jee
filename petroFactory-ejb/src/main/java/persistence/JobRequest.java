@@ -28,6 +28,8 @@ public class JobRequest implements Serializable {
 		private String note;
 		private Date interviewDate;
 	    private int nbYearExperience;
+	    private int nbOfapprouvedSkills;
+	    
 		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Experience> experiences;
 		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
@@ -41,6 +43,14 @@ public class JobRequest implements Serializable {
 		 @OneToOne
 			private JobOffer jobOffer;
 		 
+	public int getNbOfapprouvedSkills() {
+			return nbOfapprouvedSkills;
+		}
+
+		public void setNbOfapprouvedSkills(int nbOfapprouvedSkills) {
+			this.nbOfapprouvedSkills = nbOfapprouvedSkills;
+		}
+
 	public int getNbYearExperience() {
 			return nbYearExperience;
 		}

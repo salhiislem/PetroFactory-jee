@@ -7,15 +7,16 @@ import java.util.concurrent.TimeUnit;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-
-
+import persistence.Employee;
 import persistence.Experience;
 import persistence.JobOffer;
 import persistence.JobRequest;
 import persistence.Skills;
 import persistence.User;
 import utils.Degree;
+
 
 
 @Stateless
@@ -68,20 +69,21 @@ public class JobRequestService implements JobRequestServiceRemote,JobRequestServ
 			return -1;
 	}
 	
-	@Override
+/*	@Override
 	public int numberSkillsApproved(JobRequest jobRequest) {
 		int nb=0;
 		List<Skills> skillsforJob=jobRequest.getJobOffer().getDemandedskills();
 		List<Skills> skillsAPPLIED=jobRequest.getSkills();
-		for(int i=0;i<skillsforJob.size();i++)
-		{		Skills skillforjob=skillsforJob.get(i);
+		for(int j=0;j<skillsAPPLIED.size();j++)
+		{						Skills skillApp=skillsAPPLIED.get(j);
 
-			for(int j=0;j<skillsAPPLIED.size();j++)
+			for(int i=0;i<skillsforJob.size();i++)
 			{
-				Skills skillApp=skillsAPPLIED.get(j);
+				Skills skillforjob=skillsforJob.get(i);
+
 		int k=skillApp.getDescription().toUpperCase().indexOf(skillforjob.getDescription().toUpperCase());
 				
-				if(i!=-1)
+				if(k!=-1)
 			{
 					int x=findDegreeIndex(skillApp.getDegree());
 					int y=findDegreeIndex(skillforjob.getDegree());
@@ -93,7 +95,50 @@ public class JobRequestService implements JobRequestServiceRemote,JobRequestServ
 				}
 			}
 		}
-	return nb;
+	return skillsAPPLIED.size();
+	}*/
+	@Override
+	public List<JobRequest> findByJobOffer(JobOffer job) {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM JobRequest u WHERE jobOffer=:param");
+		
+		return (List<JobRequest>) query.setParameter("param",job).getResultList();
+	}
+	@Override
+	public List<JobRequest> findALL() {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM JobRequest u" );
+		
+		return (List<JobRequest>) query.getResultList();
+	}
+	@Override
+	public List<JobRequest> SortBySkill() {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM JobRequest u ORDER BY nbOfapprouvedSkills DESC" );
+		
+		return (List<JobRequest>) query.getResultList();
+	}
+	@Override
+	public void updateJob(JobRequest job) {
+		entityManager.merge(job);
+
+	}
+	@Override
+	public void adjustJobRequestBYOffer(JobOffer job) {
+	
+	
+		
+	}
+	@Override
+	public void adjustJobRequestBYOfferEXP(JobOffer job) {
+		
+	}
+	@Override
+	public List<JobRequest> SortByEXP() {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM JobRequest u ORDER BY nbYearExperience DESC" );
+		
+		return (List<JobRequest>) query.getResultList();
 	}
 		
 }

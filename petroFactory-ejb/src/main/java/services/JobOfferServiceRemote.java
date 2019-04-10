@@ -10,4 +10,5 @@ import persistence.JobOffer;
 @Remote
 public interface JobOfferServiceRemote {
 	public List<JobOffer> findAllOffers();
+	public JobOffer findOfferById(int id);
 }

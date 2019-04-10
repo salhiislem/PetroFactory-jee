@@ -9,5 +9,6 @@ import persistence.JobOffer;
 @Local
 public interface JobOfferServiceLocal {
 	public List<JobOffer> findAllOffers();
+	public JobOffer findOfferById(int id);
 
 }

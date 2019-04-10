@@ -12,12 +12,12 @@ import javax.persistence.*;
 @Entity
 
 public class JobOffer implements Serializable {
-
+	private static int jobchosen;
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	    private int id;
 	 private String position;
-	 private int nbMinYearExperience;
+	 private int MinimumExperience;
 	 @OneToMany (mappedBy="jobOffer",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Skills> Demandedskills;
 	private static final long serialVersionUID = 1L;
@@ -26,13 +26,24 @@ public class JobOffer implements Serializable {
 		return id;
 	}
 
+	
+	public static int getJobchosen() {
+		return jobchosen;
+	}
+
+
+	public static void setJobchosen(int jobchosen) {
+		JobOffer.jobchosen = jobchosen;
+	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "JobOffer [nbMinYearExperience=" + nbMinYearExperience + "]";
+		return "JobOffer [nbMinYearExperience=" + MinimumExperience + "]";
 	}
 
 	public String getPosition() {
@@ -43,12 +54,13 @@ public class JobOffer implements Serializable {
 		this.position = position;
 	}
 
-	public int getNbMinYearExperience() {
-		return nbMinYearExperience;
+	
+	public int getMinimumExperience() {
+		return MinimumExperience;
 	}
 
-	public void setNbMinYearExperience(int nbMinYearExperience) {
-		this.nbMinYearExperience = nbMinYearExperience;
+	public void setMinimumExperience(int minimumExperience) {
+		MinimumExperience = minimumExperience;
 	}
 
 	public List<Skills> getDemandedskills() {

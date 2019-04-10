@@ -21,7 +21,7 @@ public class Skills implements Serializable {
 	 @ManyToOne
 		private JobRequest jobrequest;
 	 @ManyToOne
-		private JobRequest jobOffer;
+		private JobOffer jobOffer;
 	private static final long serialVersionUID = 1L;
 
 	public JobRequest getJobrequest() {
