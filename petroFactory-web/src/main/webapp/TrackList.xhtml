@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/Trackhome.xhtml">
+
+	<ui:define name="oook">
+<h:form id="form">
+    <h:dataTable value="#{trackBean.displayallTrack()}" var="track" border="1">
+    
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Track Name " />
+			</f:facet>
+			<h:outputText value="#{track.nameTrack}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Diameter " />
+			</f:facet>
+			<h:outputText value="#{track.diameter}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Depth" />
+			</f:facet>
+			<h:outputText value="#{track.depth}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Number Of Oil Barrels " />
+			</f:facet>
+			<h:outputText value="#{track.nbOilBarrel}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Actions " />
+			</f:facet>
+			<h:commandButton action="#{trackBean.removeTrack(track.idTrack)}" value="supprimer" />
+		</h:column>
+		
+		</h:dataTable>
+     
+  
+</h:form>
+	</ui:define>
+	
+
+</ui:composition>

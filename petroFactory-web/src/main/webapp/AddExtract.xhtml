@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/Trackhome.xhtml">
+
+	<ui:define name="addextract">
+<h:form>
+
+<h:panelGrid columns="2">
+<h:outputText value="Track Name" />
+ <h:selectOneMenu  value="#{extractionBean.nametrack}" style="width:125px"  effect="fold" editable="true">
+           
+            <f:selectItems value="#{extractionBean.names}"  >
+   		    </f:selectItems>
+        </h:selectOneMenu>
+        
+<h:outputText value="Amount Of Oil" />
+<h:inputText value="#{extractionBean.nbBarrel}" />
+
+
+<h:commandButton action="#{extractionBean.addExtraction()}" value="Add Extraction Informations" />
+</h:panelGrid>
+</h:form>
+	</ui:define>
+	
+
+</ui:composition>

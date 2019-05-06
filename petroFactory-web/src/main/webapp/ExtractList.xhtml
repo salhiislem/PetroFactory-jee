@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/Trackhome.xhtml">
+
+	<ui:define name="ooo">
+<h:form id="form">
+    <h:dataTable value="#{extractionBean.displayallExtraction()}" var="extract" border="1">
+    
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Track Name " />
+			</f:facet>
+			<h:outputText value="#{extract.track.nameTrack}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Amount Extracted " />
+			</f:facet>
+			<h:outputText value="#{extract.nbBarrel}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Extraction Date" />
+			</f:facet>
+			<h:outputText value="#{extract.dateExt}" />
+		</h:column>
+	
+		</h:dataTable>
+     <h:commandButton action="#{extractionBean.addExtraction()}" value="Add Extraction Informations" />
+  
+</h:form>
+	</ui:define>
+	
+
+</ui:composition>
