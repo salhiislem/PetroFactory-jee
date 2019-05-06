@@ -1,0 +1,79 @@
+	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head></h:head> 
+<body> 
+
+                <h:form> 
+    <p:dataScroller value="#{bilanBean.lavages}" var="Shop" chunkSize="10">
+        <f:facet name="header">
+       
+        </f:facet>
+ 
+        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+           
+         <h:graphicImage value="images/fond.jpg" />
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                
+                   <h:outputText value="STORE N °:" />
+                    <h:outputText value="#{Shop.idlavage}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Name:" />
+                    <h:outputText value="#{Shop.lavagename}" style="font-weight: bold"/>
+ 						
+ 					
+                    
+                    <h:outputText value="Email:" />
+                    <h:outputText value="#{Shop.email}" style="font-weight: bold"/>
+                    
+ 
+                       <h:outputText value="Locality:" />
+                   <a href="#{'https://www.google.com/maps/place/'.concat(Shop.lavagename)} ">show on map</a>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</h:form>
+
+					
+					
+					
+					
+	
+					
+					<h:form>
+							<div class="form-group col-md-6">
+								<h:outputText value="lat" />
+								<h:inputText id="mail" style="width:100%;" class="form-control"
+									value="#{bilanBean.latitude }" />
+								<p:watermark for="mail" value="latitude" id="watermark" />
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="longi" />
+								<h:inputText style="width:100%;" class="form-control"
+									value="#{bilanBean.longitude}" />
+							</div>
+
+
+
+							<div class="clearfix"></div>
+							<h:commandButton class="btn btn-lg btn-info"
+								action="#{bilanBean.search()}" value="Search">
+							</h:commandButton>
+						</h:form>
+					
+					
+        
+            
+</body> 
+
+
+
+</ui:composition>
+

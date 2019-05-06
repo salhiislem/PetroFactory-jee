@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+     <h:form>              	
+<h:panelGrid>
+                                                	
+
+                                      <h:outputText value="User Name" />
+  <h:inputText value="#{lavageBean.userName}"    />
+                                                   
+                               
+
+
+                                                      <h:outputText value="Nationnal id card" />
+                                      <h:inputText value="#{lavageBean.nationalIdCard}"  />
+                          
+                                            
+
+                                                          <h:outputText value="Type of car" />
+                                      <h:inputText value="#{lavageBean.typeOfCar}"    />
+               
+                                            
+                                            
+
+                                                               <h:outputText value="Telephone number" />
+                                      <h:inputText value="#{lavageBean.telephoneNumber}"  />
+                                                    
+
+                                                        <h:outputText value="Registration number" />
+                                      <h:inputText value="#{lavageBean.registrationNumber}" class="form-control"   />
+                             
+                                                           <h:inputText value="#{bilanBean.afficherbilan().get().creance}" class="form-control"   />
+
+                                     
+                                     
+
+
+                                                
+
+                                            
+                                            
+
+                                            
+                                            
+
+                                           <h:form>
+                                       
+                                            <h:commandButton action="#{lavageBean.ajouterAppointment()}" value="Save and Deliver Here" />
+                                            </h:form> 
+                                            </h:panelGrid>
+                         </h:form>
+                        
+</body> 
+</html>
