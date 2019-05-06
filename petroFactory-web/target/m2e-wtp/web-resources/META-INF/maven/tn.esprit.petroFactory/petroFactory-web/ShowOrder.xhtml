@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+      
+<h:head></h:head> 
+<body> 
+
+ <h:dataTable  value="#{orderBean.orders}" var="foo" border="1" >
+ <h:column>
+ <f:facet name="header">
+ <h:outputText value="type" />
+ </f:facet>
+ <h:outputText value="#{foo.type}" />
+ </h:column>
+ <h:column>
+ <f:facet name="header" >
+ <h:outputText value="amount" />
+ </f:facet>
+ <h:outputText value="#{foo.amount}" />
+ </h:column>
+ 
+ <h:column>
+ <f:facet name="header"> 
+ <h:outputText value="price" />
+ </f:facet>
+ <h:outputText id="i" value="#{foo.price}" />
+ </h:column>
+ 
+ <h:column>
+ <f:facet name="header">
+ <h:outputText value="address" />
+ </f:facet>
+ <h:outputText value="#{orderBean.address}" />
+ </h:column>
+ 
+ 
+ </h:dataTable>        
+</body> 
+</ui:composition>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+<head>
+ <!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png"/>
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer"></meta>
+		<!-- Meta Description -->
+		<meta name="description" content=""></meta>
+		<!-- Meta Keyword -->
+		<meta name="keywords" content=""></meta>
+		<!-- meta character set -->
+		<meta charset="UTF-8" content=""></meta>
+		<!-- Site Title -->
+		<h:title>Industry</h:title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"/> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="css/linearicons.css"/>
+			<link rel="stylesheet" href="css/font-awesome.min.css"/>
+			<link rel="stylesheet" href="css/bootstrap.css"/>
+			<link rel="stylesheet" href="css/magnific-popup.css"/>
+			<link rel="stylesheet" href="css/nice-select.css"/>
+			<link rel="stylesheet" href="css/hexagons.min.css"/>					
+			<link rel="stylesheet" href="css/animate.min.css"/>
+			<link rel="stylesheet" href="css/owl.carousel.css"/>
+			<link rel="stylesheet" href="css/main.css"/> 
+</head>
+<body> 
+<h:form id="form">
+<h:panelGrid columns="2">
+
+<h:outputText value="type" />
+<h:inputText value="#{fuelBean.type}" />
+
+<h:outputText value="amount" />
+<h:inputText value="#{fuelBean.amount}" />
+
+<h:outputText value="price" />
+<h:inputText value="#{fuelBean.price}" />
+
+<h:commandButton actionListener="#{fuelBean.AddFuel()}" action="ShowFuel?faces-redirect=true" value="Add" />
+
+</h:panelGrid>
+</h:form>
+</body> 
+</ui:composition>
