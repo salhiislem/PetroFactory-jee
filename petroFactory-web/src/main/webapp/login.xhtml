@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+<h:form id="form"> 
+<h:panelGrid columns="2">
+
+<h:outputText value="login" />
+<h:inputText value="#{loginBean.login}" />
+
+<h:outputText value="password" />
+<h:inputSecret value="#{loginBean.password}"/>
+
+<p:commandButton id="btn" action="#{loginBean.doLogin()}" value="login" style="margin-right:20px;" styleClass="ui-priority-primary"></p:commandButton>
+<h:message for="btn"/>
+<!-- -->
+	
+	
+</h:panelGrid>
+</h:form>
+
+</h:body>
+</html>

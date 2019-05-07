@@ -24,6 +24,11 @@ public class Experience implements Serializable {
 	 @ManyToOne
 		private JobRequest jobrequest;
 	 
+	public Experience(String description) {
+		super();
+		this.description = description;
+	}
+
 	public JobRequest getJobrequest() {
 		return jobrequest;
 	}
@@ -36,6 +41,13 @@ public class Experience implements Serializable {
 
 	public int getId() {
 		return id;
+	}
+
+	public Experience(Date startDate, Date endDate, String description) {
+		super();
+		StartDate = startDate;
+		EndDate = endDate;
+		this.description = description;
 	}
 
 	public void setId(int id) {

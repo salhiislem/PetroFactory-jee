@@ -1,0 +1,320 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+	<ui:define name="content">
+
+
+
+		<!-- CONTENT START -->
+		<div class="page-content">
+
+			<!-- INNER PAGE BANNER -->
+			<div class="wt-bnr-inr overlay-wraper"
+				style="background-image: url(../resources/templateResources/images/banner/career.jpg);">
+				<div class="overlay-main bg-black opacity-07"></div>
+				<div class="container">
+					<div class="wt-bnr-inr-entry">
+						<h1 class="text-white">
+							<h:outputText value="#{jobOfferBean.jobSelected.position}"></h:outputText>
+						</h1>
+					</div>
+				</div>
+			</div>
+			<!-- INNER PAGE BANNER END -->
+
+			<!-- BREADCRUMB ROW -->
+			<div class="bg-gray-light p-tb20">
+				<div class="container">
+					<ul class="wt-breadcrumb breadcrumb-style-2">
+						<li><a href="javascript:void(0);"><i class="fa fa-home"></i>
+								Home</a></li>
+						<li>Job Offer Detail</li>
+					</ul>
+				</div>
+			</div>
+			<!-- BREADCRUMB ROW END -->
+
+			<!-- SECTION CONTENT START -->
+			<div class="section-full p-t80 p-b50">
+				<div class="container">
+					<div class="section-content">
+						<div class="row m-b30">
+							<!--From Styel 1-->
+							<div class="col-md-6">
+								<!-- Default ACCORDION BLOCK -->
+								<div class="section-content p-b30">
+									<div class="section-head">
+										<h4 class="text-uppercase">Basic Information</h4>
+										<div class="wt-separator-outer">
+											<div class="wt-separator style-square">
+												<span class="separator-left bg-primary"></span> <span
+													class="separator-right bg-primary"></span>
+											</div>
+										</div>
+									</div>
+									<div class="wt-accordion acc-bg-gray" id="accordion5">
+
+										<div class="panel wt-panel">
+
+											<div class="acod-head acc-actives">
+												<h6 class="acod-title text-uppercase">
+													<a data-toggle="collapse" href="#collapseOne5"
+														data-parent="#accordion5"><i class="fa fa-globe"></i>
+														Description <span class="indicator"><i
+															class="fa fa-plus"></i></span> </a>
+												</h6>
+											</div>
+											<div id="collapseOne5" class="acod-body collapse in">
+												<div class="acod-content p-tb15">
+													<h:outputText
+														value="#{jobOfferBean.jobSelected.positionDes}" />
+													>
+												</div>
+											</div>
+
+										</div>
+										<div class="panel wt-panel">
+											<div class="acod-head">
+												<h6 class="acod-title text-uppercase">
+													<a data-toggle="collapse" href="#collapseTwo5"
+														class="collapsed" data-parent="#accordion5"><i
+														class="fa fa-photo"></i> Minimum of Experience Years <span
+														class="indicator"><i class="fa fa-plus"></i></span> </a>
+												</h6>
+											</div>
+											<div id="collapseTwo5" class="acod-body collapse">
+												<div class="acod-content p-tb15">
+													<h:outputText
+														value="#{jobOfferBean.jobSelected.minimumExperience}" />
+													Years.
+												</div>
+											</div>
+										</div>
+										<div class="panel wt-panel">
+											<div class="acod-head">
+												<h6 class="acod-title text-uppercase">
+													<a data-toggle="collapse" href="#collapseThree5"
+														class="collapsed" data-parent="#accordion5"><i
+														class="fa fa-cog"></i> Salary <span class="indicator"><i
+															class="fa fa-plus"></i></span> </a>
+												</h6>
+											</div>
+											<div id="collapseThree5" class="acod-body collapse">
+												<div class="acod-content p-tb15">
+													<h:outputText value="#{jobOfferBean.jobSelected.salary}" />
+													Dinars.
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-md-6">
+								<div class="section-head">
+									<h4 class="text-uppercase">Demanded Skills</h4>
+									<div class="wt-separator-outer">
+										<div class="wt-separator style-square">
+											<span class="separator-left bg-primary"></span> <span
+												class="separator-right bg-primary"></span>
+										</div>
+									</div>
+								</div>
+								<!-- OUR GALLERY BLOCK START -->
+								<div class="wt-box bg-gray p-a30">
+
+									<ul class="list-checked black">
+										<ui:repeat value="#{jobOfferBean.jobSelected.demandedskills}"
+											var="sk">
+											<h:form>
+												<li><h:outputText value="#{sk.description}"></h:outputText>
+													: <h:outputText value="#{sk.degree}"></h:outputText></li>
+
+
+											</h:form>
+										</ui:repeat>
+									</ul>
+
+								</div>
+								<!-- OUR GALLERY BLOCK END -->
+							</div>
+						</div>
+
+						<!-- APPLY NOW YOUR SUGGETION -->
+						<div class="p-a15 ">
+							<div class="section-head">
+								<h4 class="text-uppercase">Apply Now Your Suggetion</h4>
+								<div class="wt-separator-outer">
+									<div class="wt-separator style-square">
+										<span class="separator-left bg-primary"></span> <span
+											class="separator-right bg-primary"></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="wt-box border-2  bg-black-light text-white p-a30">
+								<h:form enctype="multipart/form-data">
+									<div class="form-group">
+										<label>Your CIN</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-user"></i></span>
+											<h:inputText class="form-control"
+												placeholder="Enter Username" value="#{jobRequestBean.cin}"></h:inputText>
+										</div>
+									</div>
+									<div class="form-group">
+										<label>Note:</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-pencil"></i></span>
+											<h:inputTextarea class="form-control" rows="3"
+												value="#{jobRequestBean.note}"></h:inputTextarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label>CV:</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-pencil"></i></span>
+
+
+											<h:inputFile value="#{jobRequestBean.filecv}"></h:inputFile>
+
+											<br /> <br />
+										</div>
+									</div>
+									<div class="form-group">
+										<label>Cover Letter:</label>
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-pencil"></i></span>
+
+											<h:inputFile value="#{jobRequestBean.filecl}" />
+
+											<br /> <br />
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label>Experiences</label>
+										<div class="section-content m-b20">
+											<div class="row">
+												<div class="col-md-6 col-sm-6 m-b15 animate tada animated"
+													data-animate="tada" data-duration="1.0s" data-delay="0.1s"
+													data-offset="100"
+													style="animation-duration: 1s; animation-delay: 0.1s; visibility: visible;">
+													<div class="wt-icon-box-wraper left p-a15">
+														<ui:repeat var="exp" value="#{experienceBean.exps}">
+
+															<div class="icon-content">
+																<h5 class="wt-tilte text-uppercase"><h:outputText value="#{exp.description}"/></h5>
+																<p>Starting : <h:outputText value="#{exp.startDate}"/> and ending : <h:outputText value="#{exp.endDate}"/></p>
+															</div>
+														</ui:repeat>
+
+
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+										<div class="input-group">
+											<button type="button" class="site-button "
+												data-toggle="modal" data-target="#with-form">
+												Add Experience <i class="fa fa-angle-double-right"></i>
+											</button>
+
+
+										</div>
+									</div>
+									<h:commandButton class="site-button" type="submit"
+										action="#{jobRequestBean.ajoutRequest()}" value="Submit" />
+
+
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- SECTION CONTENT END -->
+
+
+			</div>
+
+
+
+
+		</div>
+
+
+		<div id="with-form" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+<h:form>
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<h4 class="modal-title text-white">Add Experience</h4>
+					</div>
+					<div class="modal-body">
+						<form id="demo-form" class="form-horizontal mb-lg">
+							<div class="form-group mt-lg">
+								<label class="col-sm-3 control-label">Experience</label>
+								<div class="col-sm-9">
+									<h:inputText value="#{experienceBean.currentEXP.description}"
+										placeholder="Type Experience.." class="form-control" />
+
+								</div>
+							</div>
+							<div class="form-group mt-lg">
+								<label class="col-sm-3 control-label">id</label>
+								<div class="col-sm-9">
+									<h:inputText value="#{experienceBean.currentEXP.jobrequest}"
+										placeholder="Type Experience.." class="form-control" />
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Start date</label>
+								<div class="col-sm-9">
+									<h:inputText value="#{experienceBean.currentEXP.startDate}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:inputText>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">End Date</label>
+								<div class="col-sm-9">
+									<h:inputText value="#{experienceBean.currentEXP.endDate}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:inputText>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<h:commandButton type="button" class="site-button  m-r15"
+							data-dismiss="modal" value="Close">
+							<i class="fa fa-angle-double-right"></i>
+						</h:commandButton>
+
+						<h:commandButton
+							value="Save Changes" type="submit"
+							action="#{experienceBean.addCurrentexpToList()}">
+						</h:commandButton>
+
+					</div>
+			
+				</div>
+			</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

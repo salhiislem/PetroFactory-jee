@@ -8,5 +8,8 @@
         <dependent-module archiveName="petroFactory-ejb.jar" deploy-path="/" handle="module:/resource/petroFactory-ejb/petroFactory-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="commons-codec.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.9/commons-codec-1.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

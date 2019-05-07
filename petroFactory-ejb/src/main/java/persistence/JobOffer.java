@@ -17,16 +17,55 @@ public class JobOffer implements Serializable {
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	    private int id;
 	 private String position;
+	 private String positionDes;
 	 private int MinimumExperience;
+	 private double Salary;
 	 @OneToMany (mappedBy="jobOffer",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Skills> Demandedskills;
 	private static final long serialVersionUID = 1L;
+
+	public JobOffer(String position, String positionDes, int minimumExperience) {
+		super();
+		this.position = position;
+		this.positionDes = positionDes;
+		MinimumExperience = minimumExperience;
+	}
+
+
+	public String getPositionDes() {
+		return positionDes;
+	}
+
+
+	public double getSalary() {
+		return Salary;
+	}
+
+
+	public void setSalary(double salary) {
+		Salary = salary;
+	}
+
+
+	public void setPositionDes(String positionDes) {
+		this.positionDes = positionDes;
+	}
+
 
 	public int getId() {
 		return id;
 	}
 
 	
+	public JobOffer(String position, String positionDes, int minimumExperience, double salary) {
+		super();
+		this.position = position;
+		this.positionDes = positionDes;
+		this.MinimumExperience = minimumExperience;
+		this.Salary = salary;
+	}
+
+
 	public static int getJobchosen() {
 		return jobchosen;
 	}

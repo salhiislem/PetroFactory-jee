@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    
+    template="/template/template.xhtml">
+<ui:define name="content">
+	
+			<div class="page-content">
+	
+	<div class="section-full  p-t80 p-b80 bg-gray">
+            	<div class="container">
+                    <!-- TITLE START-->
+                    <div class="section-head text-center">
+                        <h2 class="text-uppercase">All Job Offers</h2>
+                        <div class="wt-separator-outer">
+                            <div class="wt-separator style-square">
+                                <span class="separator-left bg-primary"></span>
+                                <span class="separator-right bg-primary"></span>
+                            </div>
+                        </div>
+                        <p>“Success is how high you bounce when you hit bottom.”</p>
+                    </div>
+                    <!-- TITLE END-->
+                    <div class="section-content no-col-gap">
+                        <div class="row">
+                        <ui:repeat value="#{jobOfferBean.jobOffers}" var="job">
+										<h:form>
+                            <!-- COLUMNS 1 -->
+                            <div class="col-md-4 col-sm-6 animate_line">
+                                <div class="wt-icon-box-wraper  p-a30 center bg-white m-a5">
+                                    <div class="icon-sm text-primary m-b20">
+                                        <a href="#" class="icon-cell"><i class="fa fa-life-ring" aria-hidden="true"></i></a>
+                                    </div>
+                                    <div class="icon-content">
+                                        <h5 class="wt-tilte text-uppercase"><h:outputText value="#{job.position}" /> </h5>
+                                        <p><h:outputText value="#{job.positionDes}" /></p>
+                                    </div>
+                                    <h:commandButton  class="site-button  m-r15" value="View more" action="#{jobOfferBean.afficheDetailJob(job.id)}"> <i class="fa fa-angle-double-right"></i></h:commandButton>
+                                </div>
+                            </div>
+                          </h:form>
+                          </ui:repeat>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            
+	</ui:define>
+	</ui:composition>

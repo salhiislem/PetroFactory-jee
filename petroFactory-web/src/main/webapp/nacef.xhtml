@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<h:panelGroup columns="2">
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td><h:inputText value="#{usersBean.firstname}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="(Email)"></h:outputText></td>
+						<td><h:inputText value="#{usersBean.email}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Mot de Passe"></h:outputText></td>
+						<td><h:inputSecret value="#{usersBean.password}"></h:inputSecret></td>
+					</tr>
+				
+					<tr>
+						<td><h:outputText value="Prenom"></h:outputText></td>
+						<td><h:inputText value="#{usersBean.lastname}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Username"></h:outputText></td>
+						<td><h:inputText value="#{usersBean.username}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Adress"></h:outputText></td>
+						<td><h:inputTextarea value="#{usersBean.address}"></h:inputTextarea></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="numtel"></h:outputText></td>
+						<td><h:inputText value="#{usersBean.numTel}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h:commandLink value="Ajouter User"
+								action="#{usersBean.AddUser()}" /></td>
+					</tr>
+
+				</table>
+			</h:form>
+		</h:panelGroup>
+
+</h:body>
+</h:html>

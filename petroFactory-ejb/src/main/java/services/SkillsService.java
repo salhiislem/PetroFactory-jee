@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,10 +11,12 @@ import javax.persistence.Query;
 import persistence.JobOffer;
 import persistence.JobRequest;
 import persistence.Skills;
+
 import utils.Degree;
 
 @Stateless
-public class SkillsService implements SkillsServiceRemote,SkillsServiceLocal {
+@LocalBean
+public class SkillsService implements SkillsServiceRemote {
 	@PersistenceContext(unitName = "petroFactory-ejb")
 	EntityManager entityManager;
 
@@ -79,4 +82,34 @@ public class SkillsService implements SkillsServiceRemote,SkillsServiceLocal {
 		return nb;
 	}
 
+	@Override
+	public void affecterSkillJobOffer(int idj, int idski) {
+		Skills skillManagedEntity = entityManager.find(Skills.class, idski);
+		JobOffer jobManagedEntity = entityManager.find(JobOffer.class, idj);
+
+		skillManagedEntity.setJobOffer(jobManagedEntity);		
+	}
+
+	@Override
+	public void affecterSkillJobRequest(int idj, int idski) {
+		Skills skillManagedEntity = entityManager.find(Skills.class, idski);
+		JobRequest jobManagedEntity = entityManager.find(JobRequest.class, idj);
+
+		skillManagedEntity.setJobrequest(jobManagedEntity);			
+	}
+
+	public int createSkill(Skills s) {
+        entityManager.persist(s);
+        return s.getId();
+	}
+	@Override
+	public List<Skills> findByJobOffer(int jobId) {
+		JobOffer job = entityManager.find(JobOffer.class,jobId);
+
+		Query query = entityManager.createQuery(
+				"SELECT u FROM Skills u WHERE jobOffer=:param");
+		
+		return (List<Skills>) query.setParameter("param",job).getResultList();
+	
+	}
 }

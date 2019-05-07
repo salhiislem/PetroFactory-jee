@@ -38,7 +38,8 @@ public class JobRequest implements Serializable {
 		private List<Diploma> diplomas;
 		@OneToMany (mappedBy="jobrequest",cascade={CascadeType.PERSIST, CascadeType.REMOVE},fetch=FetchType.EAGER)
 		private List<Education> educations;
-		 @ManyToOne
+		 @ManyToOne(cascade=CascadeType.REMOVE)
+		   @JoinColumn(name="jobSeeker", nullable =true, updatable = true, insertable = true)
 			private User jobSeeker;
 		 @OneToOne
 			private JobOffer jobOffer;
@@ -69,6 +70,14 @@ public class JobRequest implements Serializable {
 
 	
 		
+	public JobRequest(String cin, String cv, String coverLetter, String note) {
+			super();
+			this.cin = cin;
+			this.cv = cv;
+			this.coverLetter = coverLetter;
+			this.note = note;
+		}
+
 	public List<Experience> getExperiences() {
 			return experiences;
 		}

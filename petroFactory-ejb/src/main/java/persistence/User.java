@@ -4,7 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import utils.AccountState;
 import utils.Gender;
@@ -16,7 +30,6 @@ import utils.Gender;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_role", discriminatorType = DiscriminatorType.STRING)
-
 public class User implements Serializable {
 
 	 @Id
@@ -37,7 +50,7 @@ public class User implements Serializable {
 	    private String email;
 		@Column(nullable = false)
 	    private String numTel;
-		@OneToMany (mappedBy="jobSeeker")
+		@OneToMany (mappedBy="jobSeeker",cascade={CascadeType.ALL, CascadeType.REMOVE},orphanRemoval=true,fetch=FetchType.EAGER)
 		private List<JobRequest> jobRequests;
 		private static User ConnectedUser;
 
@@ -61,7 +74,9 @@ public class User implements Serializable {
 	    private Gender gender;
 
 	    
-	    private String address;
+	
+
+		private String address;
 	    
 	    private String profileImage;
 		@Column(unique = true,nullable = false)
@@ -284,5 +299,18 @@ public class User implements Serializable {
 		super();
 		this.id = id;
 	}
+	public User(String firstname, String lastname, Date birthday, String username, String password, String email,
+			String numTel) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.birthday = birthday;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.numTel = numTel;
+	}
+
+
 	 
 }

@@ -1,25 +1,24 @@
 package services;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import org.apache.commons.codec.digest.DigestUtils;
-
-import persistence.Employee;
 import persistence.User;
 import utils.AccountState;
 import utils.MD5;
 import utils.MD5Hash;
-
 @Stateless
-public class UserService implements UserServiceRemote, UserServiceLocal {
+@LocalBean
+public class UserService implements UserServiceRemote {
 	@PersistenceContext(unitName = "petroFactory-ejb")
 	EntityManager entityManager;
 	
@@ -80,6 +79,15 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 						+ "FROM User u");
 		return (List<User>) query.getResultList();
 	}
+	
+	
+	public List<User> getAllUsers() {
+		List<User> user = entityManager.createQuery("Select e from User e", User.class).getResultList();
+		return user;
+	}
+	
+	
+	
 	@Override
 	public void updateUser(User user) {
 		entityManager.merge(user);
@@ -87,12 +95,17 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	}
 	@Override
 	public void deleteUser(int id) {
-		entityManager.remove(entityManager.find(User.class, id));
-
+		 try {
+		
+			 entityManager.remove(entityManager.merge(entityManager.find(User.class, id)));
+		 } catch (RuntimeException e) {
+			 Logger.getAnonymousLogger().info("probleeeeeme");        }
+			 	
 		
 	}
 	@Override
 	public User loginUser(String username, String pwd) {
+		User u=null;
 		System.out.println("user: " + username);
         System.out.println("password:" + MD5.crypt(pwd));
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -104,11 +117,10 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 
         try {
         	
-            return entityManager.createQuery(c).getSingleResult();
-        } catch (Exception e) {
-            return null;
-        }
-	
+            u= entityManager.createQuery(c).getSingleResult();
+        } catch (NoResultException e) {
+Logger.getAnonymousLogger().info("probleeeeeme");        }
+	return u;
 	}
 	@Override
 	public boolean changePwd(User user, String oldPwd, String newPwd) {

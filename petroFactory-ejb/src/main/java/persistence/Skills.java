@@ -17,12 +17,21 @@ public class Skills implements Serializable {
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	    private int id;
 	 private String description;
+	 
 	 private Degree degree;
 	 @ManyToOne
 		private JobRequest jobrequest;
 	 @ManyToOne
 		private JobOffer jobOffer;
 	private static final long serialVersionUID = 1L;
+
+	public JobOffer getJobOffer() {
+		return jobOffer;
+	}
+
+	public void setJobOffer(JobOffer jobOffer) {
+		this.jobOffer = jobOffer;
+	}
 
 	public JobRequest getJobrequest() {
 		return jobrequest;
@@ -63,5 +72,13 @@ public class Skills implements Serializable {
 	public Skills() {
 		super();
 	}
+
+	public Skills(String description, Degree degree) {
+		super();
+		this.description = description;
+		this.degree = degree;
+	}
+
+	
    
 }

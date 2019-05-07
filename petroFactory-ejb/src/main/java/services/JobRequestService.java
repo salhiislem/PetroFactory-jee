@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.logging.Logger;
 
 import persistence.Employee;
 import persistence.Experience;
@@ -20,12 +22,28 @@ import utils.Degree;
 
 
 @Stateless
-public class JobRequestService implements JobRequestServiceRemote,JobRequestServiceLocal{
+@LocalBean
+public class JobRequestService implements JobRequestServiceRemote{
 	@PersistenceContext(unitName = "petroFactory-ejb")
 	EntityManager entityManager;
 	@Override
-	public void addJobRequest(JobRequest jobRequest) {
-      entityManager.persist(jobRequest);		
+	public int addJobRequest(JobRequest jobRequest) {
+		try{
+      entityManager.persist(jobRequest);
+		}
+		catch(Exception ex)
+	    {
+	        Logger.getAnonymousLogger().info("probleeeeeme");
+	        //throw ex;
+	        Throwable thr = ex;
+	        /* recursive logging warning !!! could perform very poorly, not for production....alternate idea is to use Stringbuilder and log the stringbuilder result */
+	        while (null != thr) {
+	            Logger.getAnonymousLogger().info("other");
+	            thr = thr.getCause();
+	        }
+			
+		}
+      return jobRequest.getId();
 	}
 	@Override
 	public int countYearExperience(JobRequest jobRequest) {
@@ -140,5 +158,10 @@ public class JobRequestService implements JobRequestServiceRemote,JobRequestServ
 		
 		return (List<JobRequest>) query.getResultList();
 	}
-		
+	 public void affecterSkillaJobRequest(int skillId, int jobId) {
+			JobRequest jobManagedEntity = entityManager.find(JobRequest.class, jobId);
+			Skills skillManagedEntity = entityManager.find(Skills.class, skillId);
+
+			skillManagedEntity.setJobrequest(jobManagedEntity);		
+		}	
 }
