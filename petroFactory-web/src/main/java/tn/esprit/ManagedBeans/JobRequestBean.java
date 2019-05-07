@@ -37,7 +37,14 @@ public class JobRequestBean {
 	    private int nbYearExperience;
 	    private int nbOfapprouvedSkills;
 	    
-	    
+	    private int nb;
+		
+		public int getNb() {
+			return jobRequestService.findALL().size();
+		}
+		public void setNb(int nb) {
+			this.nb = nb;
+		} 
 	
 	    public Part getFilecv() {
 			return filecv;

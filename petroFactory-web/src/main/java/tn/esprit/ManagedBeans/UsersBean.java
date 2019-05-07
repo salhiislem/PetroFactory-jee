@@ -16,6 +16,14 @@ import services.UserService;
 @ManagedBean
 @SessionScoped
 public class UsersBean implements Serializable {
+private int nb;
+	
+	public int getNb() {
+		return userService.findAllUsers().size();
+	}
+	public void setNb(int nb) {
+		this.nb = nb;
+	}
 	private static final long serialVersionUID = 1L;
 	private String firstname;
 	private String lastname;

@@ -17,6 +17,14 @@ import services.SkillsService;
 @SessionScoped
 @ManagedBean
 public class JobOfferBean implements Serializable {
+	private int nb;
+	
+	public int getNb() {
+		return jobOfferService.findAllOffers().size();
+	}
+	public void setNb(int nb) {
+		this.nb = nb;
+	}
 	private JobOffer jobSelected;
 	private static final long serialVersionUID = 1L;
 	private double salary;
@@ -114,7 +122,7 @@ public List<Skills> getDemandedskills() {
 public String ajoutOffre()
 {
 	idj=jobOfferService.createJobOffer(new JobOffer(position,description,MinimumExperience,salary));
-	return "/pages/AjoutSkillForJobOffer?faces-redirect=true";
+	return "/pages/JobOffersBack?faces-redirect=true";
 	}
 public int getIdj() {
 	return idj;

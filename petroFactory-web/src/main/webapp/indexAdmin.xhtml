@@ -5,8 +5,9 @@
 	template="/templateAdmin/template.xhtml"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="content">
-<link rel="stylesheet" href="./resources/Admin/css/style.css"></link>
-<link rel="stylesheet" href="./resources/Admin/css/main-color.css" id="colors"></link>
+		<link rel="stylesheet" href="./resources/Admin/css/style.css"></link>
+		<link rel="stylesheet" href="./resources/Admin/css/main-color.css"
+			id="colors"></link>
 
 		<div id="wrapper">
 
@@ -42,117 +43,12 @@
 							<nav id="navigation" class="style-1">
 								<ul id="responsive">
 
-									<li><a href="#">Home</a>
-										<ul>
-											<li><a href="index-2.html">Home 1</a></li>
-											<li><a href="index-3.html">Home 2</a></li>
-											<li><a href="index-4.html">Home 3</a></li>
-											<li><a href="index-5.html">Home 4</a></li>
-											<li><a href="index-6.html">Home 5</a></li>
-										</ul></li>
+									<h:form>
+										<li><h:commandLink
+												action="/template/index?faces-redirect=true"
+												value="HOME" /> </li>
+									</h:form>
 
-									<li><a href="#">Listings</a>
-										<ul>
-											<li><a href="#">List Layout</a>
-												<ul>
-													<li><a href="listings-list-with-sidebar.html">With
-															Sidebar</a></li>
-													<li><a href="listings-list-full-width.html">Full
-															Width</a></li>
-													<li><a href="listings-list-full-width-with-map.html">Full
-															Width + Map</a></li>
-												</ul></li>
-											<li><a href="#">Grid Layout</a>
-												<ul>
-													<li><a href="listings-grid-with-sidebar-1.html">With
-															Sidebar 1</a></li>
-													<li><a href="listings-grid-with-sidebar-2.html">With
-															Sidebar 2</a></li>
-													<li><a href="listings-grid-full-width.html">Full
-															Width</a></li>
-													<li><a href="listings-grid-full-width-with-map.html">Full
-															Width + Map</a></li>
-												</ul></li>
-											<li><a href="#">Half Screen Map</a>
-												<ul>
-													<li><a href="listings-half-screen-map-list.html">List
-															Layout</a></li>
-													<li><a href="listings-half-screen-map-grid-1.html">Grid
-															Layout 1</a></li>
-													<li><a href="listings-half-screen-map-grid-2.html">Grid
-															Layout 2</a></li>
-												</ul></li>
-											<li><a href="#">Single Listings</a>
-												<ul>
-													<li><a href="listings-single-page.html">Single
-															Listing 1</a></li>
-													<li><a href="listings-single-page-2.html">Single
-															Listing 2</a></li>
-													<li><a href="listings-single-page-3.html">Single
-															Listing 3</a></li>
-												</ul></li>
-										</ul></li>
-
-									<li><a class="current" href="#">User Panel</a>
-										<ul>
-											<li><a href="dashboard.html">Dashboard</a></li>
-											<li><a href="dashboard-messages.html">Messages</a></li>
-											<li><a href="dashboard-bookings.html">Bookings</a></li>
-											<li><a href="dashboard-wallet.html">Wallet</a></li>
-											<li><a href="dashboard-my-listings.html">My Listings</a></li>
-											<li><a href="dashboard-reviews.html">Reviews</a></li>
-											<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-											<li><a href="dashboard-add-listing.html">Add Listing</a></li>
-											<li><a href="dashboard-my-profile.html">My Profile</a></li>
-											<li><a href="dashboard-invoice.html">Invoice</a></li>
-										</ul></li>
-
-									<li><a href="#">Pages</a>
-										<div class="mega-menu mobile-styles three-columns">
-
-											<div class="mega-menu-section">
-												<ul>
-													<li class="mega-menu-headline">Pages #1</li>
-													<li><a href="pages-user-profile.html"><i
-															class="sl sl-icon-user"></i> User Profile</a></li>
-													<li><a href="pages-booking.html"><i
-															class="sl sl-icon-check"></i> Booking Page</a></li>
-													<li><a href="pages-add-listing.html"><i
-															class="sl sl-icon-plus"></i> Add Listing</a></li>
-													<li><a href="pages-blog.html"><i
-															class="sl sl-icon-docs"></i> Blog</a></li>
-												</ul>
-											</div>
-
-											<div class="mega-menu-section">
-												<ul>
-													<li class="mega-menu-headline">Pages #2</li>
-													<li><a href="pages-contact.html"><i
-															class="sl sl-icon-envelope-open"></i> Contact</a></li>
-													<li><a href="pages-coming-soon.html"><i
-															class="sl sl-icon-hourglass"></i> Coming Soon</a></li>
-													<li><a href="pages-404.html"><i
-															class="sl sl-icon-close"></i> 404 Page</a></li>
-													<li><a href="pages-masonry-filtering.html"><i
-															class="sl sl-icon-equalizer"></i> Masonry Filtering</a></li>
-												</ul>
-											</div>
-
-											<div class="mega-menu-section">
-												<ul>
-													<li class="mega-menu-headline">Other</li>
-													<li><a href="pages-elements.html"><i
-															class="sl sl-icon-settings"></i> Elements</a></li>
-													<li><a href="pages-pricing-tables.html"><i
-															class="sl sl-icon-tag"></i> Pricing Tables</a></li>
-													<li><a href="pages-typography.html"><i
-															class="sl sl-icon-pencil"></i> Typography</a></li>
-													<li><a href="pages-icons.html"><i
-															class="sl sl-icon-diamond"></i> Icons</a></li>
-												</ul>
-											</div>
-
-										</div></li>
 
 								</ul>
 							</nav>
@@ -181,8 +77,10 @@
 												class="sl sl-icon-envelope-open"></i> Messages</a></li>
 										<li><a href="dashboard-bookings.html"><i
 												class="fa fa-calendar-check-o"></i> Bookings</a></li>
-										<li><a href="index-2.html"><i
-												class="sl sl-icon-power"></i> Logout</a></li>
+										<li><h:commandLink
+												action="#{loginBean.DoLogout()}"
+												value="Logout" /> <i class="sl sl-icon-power"></i>
+											</li>
 									</ul>
 								</div>
 
@@ -228,13 +126,16 @@
 						<ul data-submenu-title="Listings">
 							<li><a><i class="sl sl-icon-layers"></i> Entreprise</a>
 								<ul>
-								<h:form>
-									<li>   <h:commandLink action = "/pages/JobOffersBack?faces-redirect=true" value = "Job Offers" />
-									  <span
-											class="nav-tag green">6</span></li></h:form>
-									<li><a href="dashboard-my-listings.html">Pending <span
-											class="nav-tag yellow">1</span></a></li>
-									<li><a href="dashboard-my-listings.html">Expired <span
+									<h:form>
+										<li><h:commandLink
+												action="/pages/AjoutJobOffer?faces-redirect=true"
+												value="ADD Job Offer" /> </li>
+									</h:form>
+<h:form>
+										<li><h:commandLink
+												action="/pages/JobOffersBack?faces-redirect=true"
+												value="Job Offers" /> </li>
+									</h:form>									<li><a href="dashboard-my-listings.html">Expired <span
 											class="nav-tag red">2</span></a></li>
 								</ul></li>
 							<li><a href="dashboard-reviews.html"><i
@@ -299,8 +200,8 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="dashboard-stat color-2">
 								<div class="dashboard-stat-content">
-									<h4>726</h4>
-									<span>Total Views</span>
+									<h4><h:outputText value="#{jobOfferBean.nb}" /></h4>
+									<span>Total job offers</span>
 								</div>
 								<div class="dashboard-stat-icon">
 									<i class="im im-icon-Line-Chart"></i>
@@ -313,8 +214,8 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="dashboard-stat color-3">
 								<div class="dashboard-stat-content">
-									<h4>95</h4>
-									<span>Total Reviews</span>
+									<h4><h:outputText value="#{jobRequestBean.nb}" /></h4>
+									<span>Total job requests</span>
 								</div>
 								<div class="dashboard-stat-icon">
 									<i class="im im-icon-Add-UserStar"></i>
@@ -326,8 +227,8 @@
 						<div class="col-lg-3 col-md-6">
 							<div class="dashboard-stat color-4">
 								<div class="dashboard-stat-content">
-									<h4>126</h4>
-									<span>Times Bookmarked</span>
+									<h4><h:outputText value="#{usersBean.nb}" /></h4>
+									<span>Users</span>
 								</div>
 								<div class="dashboard-stat-icon">
 									<i class="im im-icon-Heart"></i>
@@ -378,85 +279,87 @@
 								<h4>All Users</h4>
 								<ul>
 									<ui:repeat value="#{usersBean.users}" var="user">
-									<h:form>
+										<h:form>
 
-										<li class="canceled-booking">
-											<div class="list-box-listing bookings">
-												<div class="list-box-listing-img">
-													<img
-														src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=120"
-														alt=""></img>
-												</div>
-												<div class="list-box-listing-content">
-													<div class="inner">
-														<h3>
-															<h:outputText value="#{user.username}"></h:outputText>
-																													</h3>
-														<div class="inner-booking-list">
-															<h5>User:</h5>
-															<ul class="booking-list">
-																<li><h:outputText value="#{user.username}"></h:outputText></li>
-																<li><h:outputText value="#{user.gender}"></h:outputText></li>
+											<li class="canceled-booking">
+												<div class="list-box-listing bookings">
+													<div class="list-box-listing-img">
+														<img
+															src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=120"
+															alt=""></img>
+													</div>
+													<div class="list-box-listing-content">
+														<div class="inner">
+															<h3>
+																<h:outputText value="#{user.username}"></h:outputText>
+															</h3>
+															<div class="inner-booking-list">
+																<h5>User:</h5>
+																<ul class="booking-list">
+																	<li><h:outputText value="#{user.username}"></h:outputText></li>
+																	<li><h:outputText value="#{user.gender}"></h:outputText></li>
 
-															</ul>
-														</div>
-														<div class="inner-booking-list">
-															<h5>Fullname:</h5>
-															<ul class="booking-list">
-																<li><h:outputText value="#{user.lastname}"></h:outputText>
-																	<h:outputText value="#{user.firstname}"></h:outputText></li>
-															</ul>
-														</div>
-														<div class="inner-booking-list">
-															<h5>Birthday:</h5>
-															<ul class="booking-list">
-																<li class="highlighted"><h:outputText
-																		value="#{user.birthday}"></h:outputText></li>
-															</ul>
-														</div>
-														<div class="inner-booking-list">
-															<h5>Email:</h5>
-															<ul class="booking-list">
-																<li class="highlighted"><h:outputText
-																		value="#{user.email}"></h:outputText></li>
-															</ul>
-														</div>
+																</ul>
+															</div>
+															<div class="inner-booking-list">
+																<h5>Fullname:</h5>
+																<ul class="booking-list">
+																	<li><h:outputText value="#{user.lastname}"></h:outputText>
+																		<h:outputText value="#{user.firstname}"></h:outputText></li>
+																</ul>
+															</div>
+															<div class="inner-booking-list">
+																<h5>Birthday:</h5>
+																<ul class="booking-list">
+																	<li class="highlighted"><h:outputText
+																			value="#{user.birthday}"></h:outputText></li>
+																</ul>
+															</div>
+															<div class="inner-booking-list">
+																<h5>Email:</h5>
+																<ul class="booking-list">
+																	<li class="highlighted"><h:outputText
+																			value="#{user.email}"></h:outputText></li>
+																</ul>
+															</div>
 
-														<div class="inner-booking-list">
-															<h5>Address:</h5>
-															<ul class="booking-list">
-																<li><h:outputText value="#{user.address}"></h:outputText></li>
-															</ul>
+															<div class="inner-booking-list">
+																<h5>Address:</h5>
+																<ul class="booking-list">
+																	<li><h:outputText value="#{user.address}"></h:outputText></li>
+																</ul>
+															</div>
+
+															<div class="inner-booking-list">
+																<h5>Phone number:</h5>
+																<ul class="booking-list">
+																	<li><h:outputText value="#{user.numTel}"></h:outputText></li>
+																</ul>
+															</div>
+
+															<div class="inner-booking-list">
+																<h5>Account State:</h5>
+																<ul class="booking-list">
+																	<li class="highlighted"><h:outputText
+																			value="#{user.accountState}"></h:outputText></li>
+																</ul>
+															</div>
+
+															<a href="#small-dialog"
+																class="rate-review popup-with-zoom-anim"><i
+																class="sl sl-icon-envelope-open"></i> Send Message</a>
+
 														</div>
-
-														<div class="inner-booking-list">
-															<h5>Phone number:</h5>
-															<ul class="booking-list">
-																<li><h:outputText value="#{user.numTel}"></h:outputText></li>
-															</ul>
-														</div>
-
-														<div class="inner-booking-list">
-															<h5>Account State:</h5>
-															<ul class="booking-list">
-																<li class="highlighted"><h:outputText
-																		value="#{user.accountState}"></h:outputText></li>
-															</ul>
-														</div>
-
-														<a href="#small-dialog"
-															class="rate-review popup-with-zoom-anim"><i
-															class="sl sl-icon-envelope-open"></i> Send Message</a>
-
 													</div>
 												</div>
-											</div>
-											<div class="buttons-to-right">
-												<h:commandButton styleClass="button gray reject" action="#{usersBean.deleteUser(user.id)}" value="Delete" > </h:commandButton>
-													
-													
-											</div>
-										</li>
+												<div class="buttons-to-right">
+													<h:commandButton styleClass="button gray reject"
+														action="#{usersBean.deleteUser(user.id)}" value="Delete">
+													</h:commandButton>
+
+
+												</div>
+											</li>
 										</h:form>
 									</ui:repeat>
 

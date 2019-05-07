@@ -213,10 +213,12 @@
 
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">
-
+<h:form>
 						<ul data-submenu-title="Main">
-							<li class="active"><a href="dashboard.html"><i
-									class="sl sl-icon-settings"></i> Dashboard</a></li>
+							<li class="active"><h:commandLink
+												action="/indexAdmin?faces-redirect=true"
+												value=" Dashboard" /><i
+									class="sl sl-icon-settings"></i></li>
 							<li><a href="dashboard-messages.html"><i
 									class="sl sl-icon-envelope-open"></i> Messages <span
 									class="nav-tag messages">2</span></a></li>
@@ -225,7 +227,7 @@
 							<li><a href="dashboard-wallet.html"><i
 									class="sl sl-icon-wallet"></i> Wallet</a></li>
 						</ul>
-
+</h:form>
 						<ul data-submenu-title="Listings">
 							<li><a><i class="sl sl-icon-layers"></i> Entreprise</a>
 								<ul>
@@ -308,23 +310,22 @@
 													<h:outputText value="#{job.position}"></h:outputText>
 												</h3>
 											</div>
+																							<ui:repeat var="sk" value="#{job.demandedskills}">
+											
 											<div class="message-reply margin-top-0">
 											<div class="single-slot">
-												<div class="single-slot-left">
-													<div class="single-slot-time">9:00 <i class="am-pm">am</i> - 9:30 <i class="am-pm">am</i></div>
-													<button class="remove-slot"><i class="fa fa-close"></i></button>
-												</div>
-
+<h:form>
+<h:outputText value="#{sk.description}" />
 												<div class="single-slot-right">
 													<strong>Degree:</strong>
 													<div class="plusminus horiz">
-														<button></button>
-														<input type="number" name="slot-qty" value="1" min="1" max="99"></input>
-														<button></button> 
+														<h:outputText value="#{sk.degree.toString()}" /> 
 													</div>
 												</div>
+												</h:form>
 											</div>
 											</div>
+											</ui:repeat>
 										</div>
 
 									</ui:repeat>
